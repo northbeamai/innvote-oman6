@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate Oman - منصة ابتكار عُمان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* التنسيقات العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2E86AB;
+            --secondary-color: #A23B72;
+            --accent-color: #F18F01;
+            --light-color: #F8F9FA;
+            --dark-color: #2B2D42;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.7;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* الشريط العلوي */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .language-switcher {
+            margin-left: 1rem;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            padding: 0.6rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* قسم الهيرو */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            color: white;
+            padding: 9rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        
+        /* نماذج I-STEAM */
+        .isteam-framework {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .isteam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .isteam-pillar {
+            background: var(--light-color);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .isteam-pillar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .isteam-pillar h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .isteam-pillar p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* دعامات المنهج */
+        .curriculum-pillars {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pillar-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--accent-color);
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .pillar-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        .pillar-card p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-example {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--light-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            border-right: 3px solid var(--secondary-color);
+        }
+        
+        .project-example strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        /* قسم المميزات */
+        .features {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+        
+        .section-title p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* قسم المسارات التعليمية */
+        .learning-paths {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .path-card {
+            background: var(--light-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .path-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .path-content {
+            padding: 2rem 1.8rem;
+        }
+        
+        .path-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+        }
+        
+        .path-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+        }
+
+        /* نماذج التسجيل */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .language-switcher {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-lightbulb"></i>
+                    <h1 class="i18n" data-key="logo">ابتكر عُمان | Innovate Oman</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="i18n" data-key="nav_home">الرئيسية | Home</a></li>
+                    <li><a href="#isteam">I-STEAM</a></li>
+                    <li><a href="#pillars" class="i18n" data-key="nav_pillars">الدعامات | Pillars</a></li>
+                    <li><a href="#features" class="i18n" data-key="nav_features">المميزات | Features</a></li>
+                    <li><a href="#paths" class="i18n" data-key="nav_paths">المسارات | Paths</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+                        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                    </div>
+                    <button class="btn btn-outline i18n" data-key="login_btn" onclick="showModal('login-modal')">تسجيل الدخول | Login</button>
+                    <button class="btn btn-primary i18n" data-key="register_btn" onclick="showModal('register-modal')">انضم إلينا | Join</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم الهيرو -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663065916558/vyNsyWKtjRdSZMAA.png" alt="رؤية ومستقبل سلطنة عمان">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="i18n" data-key="hero_title">منصة ابتكر عُمان | Innovate Oman Platform</h2>
+                <p class="i18n" data-key="hero_description">إشعال طاقات العقول الشابة نحو المستقبل. منصة وطنية مفتوحة المصدر لتنمية مهارات الابتكار في مجالات STEAM | Igniting Young Minds for the Future. An Open-Source Innovation STEAM Platform</p>
+                <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;" onclick="showModal('register-modal')">
+                    <span class="i18n" data-key="hero_button">ابدأ رحلة الابتكار | Start Innovation Journey</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج I-STEAM -->
+    <section class="isteam-framework" id="isteam">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="i18n" data-key="isteam_title">نموذج I-STEAM المميز | The I-STEAM Framework</h2>
+                <p class="i18n" data-key="isteam_description">إطار عمل مبتكر يجمع بين الابتكار والتأثير | An innovative framework combining Innovation and Impact</p>
+            </div>
+            <div class="isteam-grid">
+                <div class="isteam-pillar">
+                    <h3>I - الابتكار | Innovation</h3>
+                    <p class="i18n" data-key="isteam_innovation">التفكير التصميمي وحل المشكلات | Design Thinking & Problem Solving</p>
+                </div>
+                <div class="isteam-pillar">
+                    <h3>S - العلوم | Science</h3>
+                    <p class="i18n" data-key="isteam_science">الاستفسار والتجريب | Inquiry & Experimentation</p>
+                </div>
+                <div class="isteam-pillar">
+                    <h3>T - التكنولوجيا | Technology</h3>
+                    <p class="i18n" data-key="isteam_technology">البرمجة، الذكاء الاصطناعي، إنترنت الأشياء | Coding, AI, IoT</p>
+                </div>
+                <div class="isteam-pillar">
+                    <h3>E - الهندسة | Engineering</h3>
+                    <p class="i18n" data-key="isteam_engineering">النمذجة والتفكير المنظومي | Prototyping & Systems Thinking</p>
+                </div>
+                <div class="isteam-pillar">
+                    <h3>A - الفنون | Arts</h3>
+                    <p class="i18n" data-key="isteam_arts">الإبداع، سرد القصص، التصميم | Creativity, Storytelling, Design</p>
+                </div>
+                <div class="isteam-pillar">
+                    <h3>M - الرياضيات | Math</h3>
+                    <p class="i18n" data-key="isteam_math">المنطق، النمذجة، البيانات | Logic, Modeling, Data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعامات المنهج -->
+    <section class="curriculum-pillars" id="pillars">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="i18n" data-key="pillars_title">دعامات المنهج الأساسية | Curriculum Pillars</h2>
+                <p class="i18n" data-key="pillars_description">دمج الثقافة العُمانية مع الابتكار العالمي | Merging Omani Culture with Global Innovation</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card green-innovation">
+                    <h3 class="i18n" data-key="pillar_green">الابتكار الأخضر | Green Innovation</h3>
+                    <p class="i18n" data-key="pillar_green_desc">الاستدامة والعمل المناخي | Sustainability & Climate Action</p>
+                    <div class="project-example">
+                        <strong class="i18n" data-key="example">مثال | Example:</strong>
+                        <span class="i18n" data-key="green_example">نظام الري الذاتي "الواحة الذكية" | "Smart Oasis" self-watering system</span>
+                    </div>
+                </div>
+                <div class="pillar-card tech-humanity">
+                    <h3 class="i18n" data-key="pillar_tech">التكنولوجيا للإنسانية | Tech for Humanity</h3>
+                    <p class="i18n" data-key="pillar_tech_desc">الذكاء الاصطناعي والروبوتات لخدمة الناس | AI & Robotics serving people</p>
+                    <div class="project-example">
+                        <strong class="i18n" data-key="example">مثال | Example:</strong>
+                        <span class="i18n" data-key="tech_example">نموذج روبوت "اليد المساعدة" | "Helping Hand" robotic prototype</span>
+                    </div>
+                </div>
+                <div class="pillar-card cultural-creativity">
+                    <h3 class="i18n" data-key="pillar_cultural">الإبداع الثقافي | Cultural Creativity</h3>
+                    <p class="i18n" data-key="pillar_cultural_desc">دمج التراث مع التصميم | Merging heritage with design</p>
+                    <div class="project-example">
+                        <strong class="i18n" data-key="example">مثال | Example:</strong>
+                        <span class="i18n" data-key="cultural_example">تجربة ثقافية بالواقع المعزز "سوق المستقبل" | "Future Souq" AR cultural experience</span>
+                    </div>
+                </div>
+                <div class="pillar-card entrepreneurship">
+                    <h3 class="i18n" data-key="pillar_entrepreneurship">ريادة الأعمال والتأثير | Entrepreneurship & Impact</h3>
+                    <p class="i18n" data-key="pillar_entrepreneurship_desc">من الفكرة إلى العرض | From idea to pitch</p>
+                    <div class="project-example">
+                        <strong class="i18n" data-key="example">مثال | Example:</strong>
+                        <span class="i18n" data-key="entrepreneurship_example">معسكر الابتكار ويوم العروض | Innovation Bootcamp & Demo Day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="i18n" data-key="features_title">لماذا منصة ابتكر عُمان؟ | Why Innovate Oman Platform?</h2>
+                <p class="i18n" data-key="features_description">منصة شاملة تجمع كل ما تحتاجه لتصبح مبتكراً ومبدعاً | A comprehensive platform with everything you need to become an innovator</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <h3 class="i18n" data-key="feature_open_source">محتوى مفتوح المصدر | Open-Source Content</h3>
+                    <p class="i18n" data-key="feature_open_source_desc">موارد تعليمية مجانية ومتاحة للجميع يمكنك تطويرها ومشاركتها | Free educational resources available to all that you can develop and share</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="i18n" data-key="feature_community">مجتمع تفاعلي | Interactive Community</h3>
+                    <p class="i18n" data-key="feature_community_desc">انضم إلى مجتمع من المبتكرين، المدربين، والخبراء في مختلف المجالات | Join a community of innovators, trainers, and experts in various fields</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-road"></i></div>
+                    <h3 class="i18n" data-key="feature_paths">مسارات تعليمية | Learning Paths</h3>
+                    <p class="i18n" data-key="feature_paths_desc">مسارات تعلم مخصصة في البرمجة، الروبوتات، التصميم، والإلكترونيات | Customized learning paths in programming, robotics, design, and electronics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 class="i18n" data-key="feature_challenges">تحديات ومسابقات | Challenges & Competitions</h3>
+                    <p class="i18n" data-key="feature_challenges_desc">شارك في تحديات أسبوعية ومسابقات وطنية لعرض مشاريعك الابتكارية | Participate in weekly challenges and national competitions to showcase your innovative projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المسارات التعليمية -->
+    <section class="learning-paths" id="paths">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="i18n" data-key="paths_title">مساراتنا التعليمية | Our Learning Paths</h2>
+                <p class="i18n" data-key="paths_description">اختر مسارك وابدأ رحلة الابتكار | Choose your path and start your innovation journey</p>
+            </div>
+            <div class="paths-grid">
+                <div class="path-card">
+                    <div class="path-image"><i class="fas fa-robot"></i></div>
+                    <div class="path-content">
+                        <h3 class="i18n" data-key="path_robotics">الروبوتات والبرمجة | Robotics & Programming</h3>
+                        <p class="i18n" data-key="path_robotics_desc">تعلم برمجة الروبوتات وتطوير التطبيقات الذكية | Learn robot programming and develop smart applications</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; color: var(--primary-color); border-color: var(--primary-color);">
+                            <span class="i18n" data-key="start_learning">ابدأ التعلم | Start Learning</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <div class="path-image"><i class="fas fa-palette"></i></div>
+                    <div class="path-content">
+                        <h3 class="i18n" data-key="path_design">التصميم والإبداع | Design & Creativity</h3>
+                        <p class="i18n" data-key="path_design_desc">أبدع في التصميم الثلاثي الأبعاد والفنون الرقمية | Excel in 3D design and digital arts</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; color: var(--primary-color); border-color: var(--primary-color);">
+                            <span class="i18n" data-key="start_learning">ابدأ التعلم | Start Learning</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <div class="path-image"><i class="fas fa-microchip"></i></div>
+                    <div class="path-content">
+                        <h3 class="i18n" data-key="path_electronics">الإلكترونيات الذكية | Smart Electronics</h3>
+                        <p class="i18n" data-key="path_electronics_desc">اصنع مشاريع إلكترونية مبتكرة باستخدام Arduino وRaspberry Pi | Create innovative electronic projects using Arduino and Raspberry Pi</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; color: var(--primary-color); border-color: var(--primary-color);">
+                            <span class="i18n" data-key="start_learning">ابدأ التعلم | Start Learning</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <div class="path-image"><i class="fas fa-brain"></i></div>
+                    <div class="path-content">
+                        <h3 class="i18n" data-key="path_emerging">التقنيات الناشئة | Emerging Technologies</h3>
+                        <p class="i18n" data-key="path_emerging_desc">استكشاف الذكاء الاصطناعي، IoT، والواقع الافتراضي | Explore AI, IoT, and Virtual Reality</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; color: var(--primary-color); border-color: var(--primary-color);">
+                            <span class="i18n" data-key="start_learning">ابدأ التعلم | Start Learning</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="i18n" data-key="footer_innovate">ابتكر عُمان | Innovate Oman</h3>
+                    <p class="i18n" data-key="footer_description">منصة الابتكار المفتوحة لكل شاب عُماني. إشعال طاقات العقول الشابة نحو المستقبل. | Open innovation platform for every Omani youth. Igniting young minds for the future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="i18n" data-key="footer_quick_links">روابط سريعة | Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="i18n" data-key="footer_home">الرئيسية | Home</a></li>
+                        <li><a href="#isteam">I-STEAM</a></li>
+                        <li><a href="#pillars" class="i18n" data-key="footer_pillars">الدعامات | Pillars</a></li>
+                        <li><a href="#features" class="i18n" data-key="footer_features">المميزات | Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="i18n" data-key="footer_resources">الموارد | Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="i18n" data-key="footer_library">المكتبة المفتوحة | Open Library</a></li>
+                        <li><a href="#" class="i18n" data-key="footer_guides">أدلة المدربين | Trainer Guides</a></li>
+                        <li><a href="#" class="i18n" data-key="footer_faq">الأسئلة الشائعة | FAQ</a></li>
+                        <li><a href="#" class="i18n" data-key="footer_support">الدعم الفني | Technical Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="i18n" data-key="footer_contact">تواصل معنا | Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@innovate-oman.om">info@innovate-oman.om</a></li>
+                        <!-- تم إزالة رقم الهاتف -->
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 <span class="i18n" data-key="footer_copyright">منصة ابتكر عُمان. جميع الحقوق محفوظة. | Innovate Oman Platform. All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نماذج التسجيل -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="i18n" data-key="login_title">تسجيل الدخول | Login</h2>
+                <button class="close-modal" onclick="closeModal('login-modal')">&times;</button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email" class="i18n" data-key="login_email">البريد الإلكتروني | Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password" class="i18n" data-key="login_password">كلمة المرور | Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    <span class="i18n" data-key="login_button">تسجيل الدخول | Login</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة التسجيل -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="i18n" data-key="register_title">انضم إلى منصة ابتكر عُمان | Join Innovate Oman Platform</h2>
+                <button class="close-modal" onclick="closeModal('register-modal')">&times;</button>
+            </div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name" class="i18n" data-key="register_name">الاسم الكامل | Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email" class="i18n" data-key="register_email">البريد الإلكتروني | Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-role" class="i18n" data-key="register_role">أنا | I am</label>
+                    <select id="register-role" required>
+                        <option value=""><span class="i18n" data-key="register_role_select">اختر الدور | Select Role</span></option>
+                        <option value="student"><span class="i18n" data-key="register_student">طالب/متعلم | Student/Learner</span></option>
+                        <option value="trainer"><span class="i18n" data-key="register_trainer">مدرب/معلم | Trainer/Teacher</span></option>
+                        <option value="parent"><span class="i18n" data-key="register_parent">ولي أمر | Parent</span></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="register-password" class="i18n" data-key="register_password">كلمة المرور | Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    <span class="i18n" data-key="register_button">إنشاء حساب | Create Account</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // نظام الترجمة
+        const translations = {
+            ar: {
+                // النصوص العربية
+                logo: "ابتكر عُمان",
+                nav_home: "الرئيسية",
+                nav_pillars: "الدعامات",
+                nav_features: "المميزات",
+                nav_paths: "المسارات",
+                login_btn: "تسجيل الدخول",
+                register_btn: "انضم إلينا",
+                hero_title: "منصة ابتكر عُمان",
+                hero_description: "إشعال طاقات العقول الشابة نحو المستقبل. منصة وطنية مفتوحة المصدر لتنمية مهارات الابتكار في مجالات STEAM",
+                hero_button: "ابدأ رحلة الابتكار",
+                isteam_title: "نموذج I-STEAM المميز",
+                isteam_description: "إطار عمل مبتكر يجمع بين الابتكار والتأثير",
+                isteam_innovation: "التفكير التصميمي وحل المشكلات",
+                isteam_science: "الاستفسار والتجريب",
+                isteam_technology: "البرمجة، الذكاء الاصطناعي، إنترنت الأشياء",
+                isteam_engineering: "النمذجة والتفكير المنظومي",
+                isteam_arts: "الإبداع، سرد القصص، التصميم",
+                isteam_math: "المنطق، النمذجة، البيانات",
+                pillars_title: "دعامات المنهج الأساسية",
+                pillars_description: "دمج الثقافة العُمانية مع الابتكار العالمي",
+                pillar_green: "الابتكار الأخضر",
+                pillar_green_desc: "الاستدامة والعمل المناخي",
+                pillar_tech: "التكنولوجيا للإنسانية",
+                pillar_tech_desc: "الذكاء الاصطناعي والروبوتات لخدمة الناس",
+                pillar_cultural: "الإبداع الثقافي",
+                pillar_cultural_desc: "دمج التراث مع التصميم",
+                pillar_entrepreneurship: "ريادة الأعمال والتأثير",
+                pillar_entrepreneurship_desc: "من الفكرة إلى العرض",
+                example: "مثال",
+                green_example: 'نظام الري الذاتي "الواحة الذكية"',
+                tech_example: 'نموذج روبوت "اليد المساعدة"',
+                cultural_example: 'تجربة ثقافية بالواقع المعزز "سوق المستقبل"',
+                entrepreneurship_example: "معسكر الابتكار ويوم العروض",
+                features_title: "لماذا منصة ابتكر عُمان؟",
+                features_description: "منصة شاملة تجمع كل ما تحتاجه لتصبح مبتكراً ومبدعاً",
+                feature_open_source: "محتوى مفتوح المصدر",
+                feature_open_source_desc: "موارد تعليمية مجانية ومتاحة للجميع يمكنك تطويرها ومشاركتها",
+                feature_community: "مجتمع تفاعلي",
+                feature_community_desc: "انضم إلى مجتمع من المبتكرين، المدربين، والخبراء في مختلف المجالات",
+                feature_paths: "مسارات تعليمية",
+                feature_paths_desc: "مسارات تعلم مخصصة في البرمجة، الروبوتات، التصميم، والإلكترونيات",
+                feature_challenges: "تحديات ومسابقات",
+                feature_challenges_desc: "شارك في تحديات أسبوعية ومسابقات وطنية لعرض مشاريعك الابتكارية",
+                paths_title: "مساراتنا التعليمية",
+                paths_description: "اختر مسارك وابدأ رحلة الابتكار",
+                path_robotics: "الروبوتات والبرمجة",
+                path_robotics_desc: "تعلم برمجة الروبوتات وتطوير التطبيقات الذكية",
+                path_design: "التصميم والإبداع",
+                path_design_desc: "أبدع في التصميم الثلاثي الأبعاد والفنون الرقمية",
+                path_electronics: "الإلكترونيات الذكية",
+                path_electronics_desc: "اصنع مشاريع إلكترونية مبتكرة باستخدام Arduino وRaspberry Pi",
+                path_emerging: "التقنيات الناشئة",
+                path_emerging_desc: "استكشاف الذكاء الاصطناعي، IoT، والواقع الافتراضي",
+                start_learning: "ابدأ التعلم",
+                footer_innovate: "ابتكر عُمان",
+                footer_description: "منصة الابتكار المفتوحة لكل شاب عُماني. إشعال طاقات العقول الشابة نحو المستقبل.",
+                footer_quick_links: "روابط سريعة",
+                footer_home: "الرئيسية",
+                footer_pillars: "الدعامات",
+                footer_features: "المميزات",
+                footer_resources: "الموارد",
+                footer_library: "المكتبة المفتوحة",
+                footer_guides: "أدلة المدربين",
+                footer_faq: "الأسئلة الشائعة",
+                footer_support: "الدعم الفني",
+                footer_contact: "تواصل معنا",
+                footer_copyright: "منصة ابتكر عُمان. جميع الحقوق محفوظة.",
+                login_title: "تسجيل الدخول",
+                login_email: "البريد الإلكتروني",
+                login_password: "كلمة المرور",
+                login_button: "تسجيل الدخول",
+                register_title: "انضم إلى منصة ابتكر عُمان",
+                register_name: "الاسم الكامل",
+                register_email: "البريد الإلكتروني",
+                register_role: "أنا",
+                register_role_select: "اختر الدور",
+                register_student: "طالب/متعلم",
+                register_trainer: "مدرب/معلم",
+                register_parent: "ولي أمر",
+                register_password: "كلمة المرور",
+                register_button: "إنشاء حساب"
+            },
+            en: {
+                // English texts
+                logo: "Innovate Oman",
+                nav_home: "Home",
+                nav_pillars: "Pillars",
+                nav_features: "Features",
+                nav_paths: "Paths",
+                login_btn: "Login",
+                register_btn: "Join",
+                hero_title: "Innovate Oman Platform",
+                hero_description: "Igniting Young Minds for the Future. An Open-Source Innovation STEAM Platform",
+                hero_button: "Start Innovation Journey",
+                isteam_title: "The I-STEAM Framework",
+                isteam_description: "An innovative framework combining Innovation and Impact",
+                isteam_innovation: "Design Thinking & Problem Solving",
+                isteam_science: "Inquiry & Experimentation",
+                isteam_technology: "Coding, AI, IoT",
+                isteam_engineering: "Prototyping & Systems Thinking",
+                isteam_arts: "Creativity, Storytelling, Design",
+                isteam_math: "Logic, Modeling, Data",
+                pillars_title: "Curriculum Pillars",
+                pillars_description: "Merging Omani Culture with Global Innovation",
+                pillar_green: "Green Innovation",
+                pillar_green_desc: "Sustainability & Climate Action",
+                pillar_tech: "Tech for Humanity",
+                pillar_tech_desc: "AI & Robotics serving people",
+                pillar_cultural: "Cultural Creativity",
+                pillar_cultural_desc: "Merging heritage with design",
+                pillar_entrepreneurship: "Entrepreneurship & Impact",
+                pillar_entrepreneurship_desc: "From idea to pitch",
+                example: "Example",
+                green_example: '"Smart Oasis" self-watering system',
+                tech_example: '"Helping Hand" robotic prototype',
+                cultural_example: '"Future Souq" AR cultural experience',
+                entrepreneurship_example: "Innovation Bootcamp & Demo Day",
+                features_title: "Why Innovate Oman Platform?",
+                features_description: "A comprehensive platform with everything you need to become an innovator",
+                feature_open_source: "Open-Source Content",
+                feature_open_source_desc: "Free educational resources available to all that you can develop and share",
+                feature_community: "Interactive Community",
+                feature_community_desc: "Join a community of innovators, trainers, and experts in various fields",
+                feature_paths: "Learning Paths",
+                feature_paths_desc: "Customized learning paths in programming, robotics, design, and electronics",
+                feature_challenges: "Challenges & Competitions",
+                feature_challenges_desc: "Participate in weekly challenges and national competitions to showcase your innovative projects",
+                paths_title: "Our Learning Paths",
+                paths_description: "Choose your path and start your innovation journey",
+                path_robotics: "Robotics & Programming",
+                path_robotics_desc: "Learn robot programming and develop smart applications",
+                path_design: "Design & Creativity",
+                path_design_desc: "Excel in 3D design and digital arts",
+                path_electronics: "Smart Electronics",
+                path_electronics_desc: "Create innovative electronic projects using Arduino and Raspberry Pi",
+                path_emerging: "Emerging Technologies",
+                path_emerging_desc: "Explore AI, IoT, and Virtual Reality",
+                start_learning: "Start Learning",
+                footer_innovate: "Innovate Oman",
+                footer_description: "Open innovation platform for every Omani youth. Igniting young minds for the future.",
+                footer_quick_links: "Quick Links",
+                footer_home: "Home",
+                footer_pillars: "Pillars",
+                footer_features: "Features",
+                footer_resources: "Resources",
+                footer_library: "Open Library",
+                footer_guides: "Trainer Guides",
+                footer_faq: "FAQ",
+                footer_support: "Technical Support",
+                footer_contact: "Contact Us",
+                footer_copyright: "Innovate Oman Platform. All rights reserved.",
+                login_title: "Login",
+                login_email: "Email",
+                login_password: "Password",
+                login_button: "Login",
+                register_title: "Join Innovate Oman Platform",
+                register_name: "Full Name",
+                register_email: "Email",
+                register_role: "I am",
+                register_role_select: "Select Role",
+                register_student: "Student/Learner",
+                register_trainer: "Trainer/Teacher",
+                register_parent: "Parent",
+                register_password: "Password",
+                register_button: "Create Account"
+            }
+        };
+
+        let currentLanguage = 'ar';
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelectorAll('.i18n').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // تحديث أزرار اللغة
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // تحديث اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // نظام إدارة النماذج والواجهة
+        const app = {
+            currentUser: null,
+            
+            init() {
+                this.setupEventListeners();
+                this.loadUserData();
+                this.setupScrollAnimations();
+            },
+            
+            setupEventListeners() {
+                // التنقل السلس
+                const scrollLinks = document.querySelectorAll('a[href^="#"]');
+                scrollLinks.forEach(link => {
+                    link.addEventListener('click', this.smoothScroll);
+                });
+                
+                // نماذج التسجيل
+                document.getElementById('login-form').addEventListener('submit', this.handleLogin.bind(this));
+                document.getElementById('register-form').addEventListener('submit', this.handleRegister.bind(this));
+            },
+            
+            smoothScroll(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            },
+            
+            setupScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, observerOptions);
+                
+                // تطبيق التأثير على العناصر
+                const animatedElements = document.querySelectorAll('.feature-card, .isteam-pillar, .pillar-card, .path-card');
+                animatedElements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                });
+            },
+            
+            handleLogin(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // محاكاة عملية تسجيل الدخول
+                if (email && password) {
+                    alert(currentLanguage === 'ar' ? 'تم تسجيل الدخول بنجاح!' : 'Login successful!');
+                    closeModal('login-modal');
+                    this.currentUser = { email, name: 'مستخدم' };
+                    this.updateUI();
+                }
+            },
+            
+            handleRegister(e) {
+                e.preventDefault();
+                const formData = {
+                    name: document.getElementById('register-name').value,
+                    email: document.getElementById('register-email').value,
+                    role: document.getElementById('register-role').value,
+                    password: document.getElementById('register-password').value
+                };
+                
+                // محاكاة عملية التسجيل
+                if (this.validateRegister(formData)) {
+                    alert(currentLanguage === 'ar' ? 'تم إنشاء الحساب بنجاح! مرحباً بك في منصة ابتكر عُمان' : 'Account created successfully! Welcome to Innovate Oman Platform');
+                    closeModal('register-modal');
+                    this.currentUser = formData;
+                    this.updateUI();
+                }
+            },
+            
+            validateRegister(data) {
+                // تحقق بسيط من البيانات
+                if (!data.name || !data.email || !data.role || !data.password) {
+                    alert(currentLanguage === 'ar' ? 'يرجى ملء جميع الحقول' : 'Please fill all fields');
+                    return false;
+                }
+                return true;
+            },
+            
+            updateUI() {
+                if (this.currentUser) {
+                    // تحديث الواجهة للمستخدم المسجل
+                    const authButtons = document.querySelector('.auth-buttons');
+                    authButtons.innerHTML = `
+                        <div class="language-switcher">
+                            <button class="lang-btn ${currentLanguage === 'ar' ? 'active' : ''}" onclick="switchLanguage('ar')">العربية</button>
+                            <button class="lang-btn ${currentLanguage === 'en' ? 'active' : ''}" onclick="switchLanguage('en')">English</button>
+                        </div>
+                        <span style="color: white; margin: 0 1rem;">${currentLanguage === 'ar' ? 'مرحباً' : 'Welcome'} ${this.currentUser.name}</span>
+                        <button class="btn btn-outline" onclick="app.logout()">${currentLanguage === 'ar' ? 'تسجيل الخروج' : 'Logout'}</button>
+                    `;
+                }
+            },
+            
+            logout() {
+                this.currentUser = null;
+                location.reload();
+            },
+            
+            loadUserData() {
+                // تحميل بيانات المستخدم من localStorage
+                const savedUser = localStorage.getItem('innovateOmanUser');
+                if (savedUser) {
+                    this.currentUser = JSON.parse(savedUser);
+                    this.updateUI();
+                }
+            },
+            
+            saveUserData() {
+                if (this.currentUser) {
+                    localStorage.setItem('innovateOmanUser', JSON.stringify(this.currentUser));
+                }
+            }
+        };
+
+        // دوال إدارة النوافذ المنبثقة
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // إغلاق النافذة عند النقر خارجها
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // تهيئة التطبيق عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    </script>
+</body>
+</html>
